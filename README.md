@@ -2,13 +2,13 @@
 
 #
 
-### *Description:*
+## *Description:*
 
 - ****
 
 #
 
-### *Usage:*
+## *Usage:*
 
 - ****
 - ****
@@ -17,19 +17,19 @@
 
 #
 
-#### *USER STORY:*
+### *USER STORY:*
 
 ![User Story](./img/user.story.m18.png)
 
 #
 
-#### *Demonstration of Application*
+### *Demonstration of Application*
 
 - **[Demonstration of Usage]()**
 
 #
 
-##### *Technologies Used:*
+### *Technologies Used:*
 
 
 * [Javascript](https://www.javascript.com/)
@@ -43,13 +43,13 @@
 
 #
 
-##### *References*
+#### *References*
 
 - **[The Coding Boot Camp of UT-Austin](https://techbootcamps.utexas.edu/coding/)**
 
 #
 
-##### *Author*
+#### *Author*
 
 **Charles Breven Glasgow**
 
