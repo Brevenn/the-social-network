@@ -19,7 +19,7 @@
 
 #### *USER STORY:*
 
-![User Story]()
+![User Story](./img/user.story.m18.png)
 
 #
 
