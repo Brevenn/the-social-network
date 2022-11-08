@@ -1,0 +1,28 @@
+{
+  "name": "whats-the-word",
+  "version": "1.0.0",
+  "description": "NoSQL Social API Assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server",
+    "start": "node server.js",
+    "watch": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brevenn/the-social-network.git"
+  },
+  "author": "Charles Breven Glasgow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Brevenn/the-social-network/issues"
+  },
+  "homepage": "https://github.com/Brevenn/the-social-network#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
