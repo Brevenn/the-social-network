@@ -25,7 +25,7 @@ const userController = {
         .populate("thoughts")
         .then((dbUserData) => {
             if (!dbUserData) {
-                return res.sttus(404).json({ message: "no user with this id!"});
+                return res.status(404).json({ message: "no user with this id!"});
             }
             res.json(dbUserData);
         })
