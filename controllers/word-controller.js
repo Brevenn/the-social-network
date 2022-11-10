@@ -20,7 +20,7 @@ const wordController = {
         Word.findOne({ _id: req.params.wordId})
         .then((dbWordData) => {
             if (!dbWordData) {
-                return res.status(404).json({ message: "no word with this id!"});
+                return res.status(404).json({ message: "no word said with this id!"});
             }
             res.json(dbWordData);
         })
@@ -52,10 +52,10 @@ const wordController = {
         });
     },
 
-    // update a user
-    updateUser(req, res) {
-        User.findOneAndUpdate(
-            { _id: req.params.userId },
+    // update a "whats the word" comment
+    updateWord(req, res) {
+        Word.findOneAndUpdate(
+            { _id: req.params.wordId },
             {
                 $set: req.body,
             },
@@ -66,7 +66,7 @@ const wordController = {
         )
         .then((dbWordData) => {
             if (!dbWordData) {
-                return res.status(404).json({ message: "No user with this id!" });
+                return res.status(404).json({ message: "No Word said with this id!" });
             }
             res.json(dbWordData);
         })
@@ -76,17 +76,26 @@ const wordController = {
         });
     },
     
-    // delete a user
-    deleteUser(req, res) {
+    // delete a "whats the word" comment
+    deleteWord(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
         .then((dbWordData) => {
             if (!dbWordData) {
-                return res.status(404).json({ message: "No user with this id!" });
+                return res.status(404).json({ message: "No word said with this id!" });
             }
-            return Word.deleteMany({ _id: { $in: dbWordData.thoughts } });
+            return User.findOneAndUpdate(
+                { thoughts: req.params.wordId },
+                { $pull: { thoughts: req.params.wordId } },
+                { new: true }
+            );
         })
-        .then(() => {
-            res.json({ message: "User and associated thoughts deleted!" });
+        .then((dbUserData) => {
+            if (!dbUserData) {
+                return res
+                .status(404)
+                .json({ message: " Word said but no user with this id!" });
+            }
+            res.json({ message: "Worrd successfully deleted!" });
         })
         .catch((err) => {
             console.log(err);
@@ -95,15 +104,15 @@ const wordController = {
     },
     
     // add a friend to the friend list
-    addFriend(req, res) {
+    addReaction(req, res) {
         User.findOneAndUpdate(
-            { _id: req.params.userId },
-            { $addtoSet: { friends: req.params.friendId } },
-            { new: true }
+            { _id: req.params.wordId },
+            { $addtoSet: { reactions: req.body } },
+            { runValidators: true, new: true }
         )
         .then((dbWordData) => {
             if (!dbWordData) {
-                return res.status(404).json({ message: "No user with this id!" });
+                return res.status(404).json({ message: "No word said with this id!" });
             }
             res.json(dbWordData);
         })
@@ -114,15 +123,15 @@ const wordController = {
     },
 
     // remove a friend from the friend list
-    removeFriend(req, res) {
-        User.findOneAndUpdate(
-            { _id: req.params.userId },
-            { $pull: { friends: req.params.friendId } },
-            { new: true }
+    removeReaction(req, res) {
+        Word.findOneAndUpdate(
+            { _id: req.params.wordId },
+            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { runValidators: true, new: true }
         )
         .then((dbWordData) => {
             if (!dbWordData) {
-                return res.status(404).json({ message: "No user with this id!" });
+                return res.status(404).json({ message: "No word said with this id!" });
             }
             res.json(dbWordData);
         })
@@ -133,4 +142,4 @@ const wordController = {
     },
 };
 
-module.exports = userController;
+module.exports = wordController;
