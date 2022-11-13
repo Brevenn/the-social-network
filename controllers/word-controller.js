@@ -90,19 +90,9 @@ const wordController = {
             .status(404)
             .json({ message: "No word said with this id!" });
         }
-        return Word.findOneAndUpdate(
-          { reactions: req.params.wordId },
-          { $pull: { reactions: req.params.wordId } },
-          { new: true }
+        return res.json(
+          dbWordData
         );
-      })
-      .then((dbUserData) => {
-        if (!dbUserData) {
-          return res
-            .status(404)
-            .json({ message: " Word said but no user with this id!" });
-        }
-        res.json({ message: "Word successfully deleted!" });
       })
       .catch((err) => {
         console.log(err);

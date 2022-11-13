@@ -3,10 +3,6 @@ const dateInfo = require("../utils/dateinfo");
 
 const reactionSchema = new Schema(
   {
-    // reactionId: {
-    //   type: Schema.Types.ObjectId,
-    //   default: () => new Types.ObjectId(),
-    // },
     wordText: {
       type: String,
       required: "You need to tell us what's the word!",
@@ -32,9 +28,9 @@ const reactionSchema = new Schema(
   }
 );
 
-reactionSchema.virtual("reactionCount").get(function () {
-  return this.reactions.length;
-});
+// reactionSchema.virtual("reactionCount").get(function () {
+//   return this.reactions.length;
+// });
 
 const Reaction = model("Reaction", reactionSchema);
 

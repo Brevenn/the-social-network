@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 // const responseSchema = require("./response");
 const dateInfo = require("../utils/dateinfo");
+const Reaction = require("./reaction");
 // const User = require("./user");
 
 const wordSchema = new Schema(
@@ -21,7 +22,7 @@ const wordSchema = new Schema(
       ref: "User",
       required: true,
     },
-    reactions: [{type: Schema.Types.ObjectId, ref: "Reaction"}],
+    reactions: [Reaction.schema],
   },
   {
     toJSON: {
