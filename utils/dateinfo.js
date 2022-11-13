@@ -87,7 +87,7 @@ module.exports = (
     periodOfDay = "am";
   }
 
-  const formattedTimeStamp = `${foramattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
+  const formattedTimeStamp = `${formattedMonth} ${dayOfMonth}, ${year} at ${hour}:${minutes} ${periodOfDay}`;
 
   return formattedTimeStamp;
 };

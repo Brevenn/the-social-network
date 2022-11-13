@@ -36,8 +36,8 @@ const wordController = {
     Word.create(req.body)
       .then((dbWordData) => {
         return User.findOneAndUpdate(
-          { _id: req.params.userId },
-          { $push: { thoughts: dbWordData._id } },
+          { _id: req.body.userId },
+          { $push: { reactions: dbWordData._id } },
           { new: true }
         );
       })
@@ -83,16 +83,16 @@ const wordController = {
 
   // delete a "whats the word" comment
   deleteWord(req, res) {
-    User.findOneAndDelete({ _id: req.params.userId })
+    Word.findOneAndDelete({ _id: req.params.wordId })
       .then((dbWordData) => {
         if (!dbWordData) {
           return res
             .status(404)
             .json({ message: "No word said with this id!" });
         }
-        return User.findOneAndUpdate(
-          { thoughts: req.params.wordId },
-          { $pull: { thoughts: req.params.wordId } },
+        return Word.findOneAndUpdate(
+          { reactions: req.params.wordId },
+          { $pull: { reactions: req.params.wordId } },
           { new: true }
         );
       })
@@ -102,55 +102,14 @@ const wordController = {
             .status(404)
             .json({ message: " Word said but no user with this id!" });
         }
-        res.json({ message: "Worrd successfully deleted!" });
+        res.json({ message: "Word successfully deleted!" });
       })
       .catch((err) => {
         console.log(err);
-        response.status(500).json(err);
+        res.status(500).json(err);
       });
   },
 
-  // add a friend to the friend list
-  addReaction(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.wordId },
-      { $addtoSet: { reactions: req.body } },
-      { runValidators: true, new: true }
-    )
-      .then((dbWordData) => {
-        if (!dbWordData) {
-          return res
-            .status(404)
-            .json({ message: "No word said with this id!" });
-        }
-        res.json(dbWordData);
-      })
-      .catch((err) => {
-        console.log(err);
-        response.status(500).json(err);
-      });
-  },
-
-  // remove a friend from the friend list
-  removeReaction(req, res) {
-    Word.findOneAndUpdate(
-      { _id: req.params.wordId },
-      { $pull: { reactions: { reactionId: req.params.reactionId } } },
-      { runValidators: true, new: true }
-    )
-      .then((dbWordData) => {
-        if (!dbWordData) {
-          return res
-            .status(404)
-            .json({ message: "No word said with this id!" });
-        }
-        res.json(dbWordData);
-      })
-      .catch((err) => {
-        console.log(err);
-        response.status(500).json(err);
-      });
-  },
 };
 
 module.exports = wordController;

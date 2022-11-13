@@ -1,6 +1,6 @@
 const { response } = require("express");
 const { User, Word } = require("../models");
-const responseSchema = require("../models/response");
+
 
 const userController = {
   // get all users
@@ -20,8 +20,8 @@ const userController = {
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select("-__V")
-      .populate("firends")
-      .populate("thoughts")
+      .populate("friends")
+      .populate("words")
       .then((dbUserData) => {
         if (!dbUserData) {
           return res.status(404).json({ message: "no user with this id!" });
@@ -77,10 +77,10 @@ const userController = {
         if (!dbUserData) {
           return res.status(404).json({ message: "No user with this id!" });
         }
-        return Word.deleteMany({ _id: { $in: dbUserData.thoughts } });
+        return Word.deleteMany({ _id: { $in: dbUserData.reactions } });
       })
       .then(() => {
-        res.json({ message: "User and associated thoughts deleted!" });
+        res.json({ message: "User and associated reactions deleted!" });
       })
       .catch((err) => {
         console.log(err);
@@ -92,7 +92,7 @@ const userController = {
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addtoSet: { friends: req.params.friendId } },
+      { $addToSet: { friends: req.params.friendId } },
       { new: true }
     )
       .then((dbUserData) => {

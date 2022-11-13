@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
-const responseSchema = require("./response");
+// const responseSchema = require("./response");
 const dateInfo = require("../utils/dateinfo");
+// const User = require("./user");
 
 const wordSchema = new Schema(
   {
@@ -15,11 +16,12 @@ const wordSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateInfo(timestamp),
     },
-    username: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
-    responses: [responseSchema],
+    reactions: [{type: Schema.Types.ObjectId, ref: "Reaction"}],
   },
   {
     toJSON: {
@@ -29,10 +31,7 @@ const wordSchema = new Schema(
   }
 );
 
-responseSchema.virtual("responseCount").get(function () {
-  return this.reactions.length;
-});
 
-const Response = model("Response", responseSchema);
+const Word = model("Word", wordSchema);
 
-module.exports = Response;
+module.exports = Word;

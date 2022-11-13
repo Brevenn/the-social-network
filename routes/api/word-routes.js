@@ -6,9 +6,12 @@ const {
   createWord,
   updateWord,
   deleteWord,
+} = require("../../controllers/word-controller");
+
+const {
   addReaction,
   removeReaction,
-} = require("../../controllers/word-controller");
+} = require("../../controllers/reaction-controller");
 
 router.route("/").get(getWords).post(createWord);
 
