@@ -96,7 +96,6 @@
 * [MongoDB](https://www.mongodb.com/)
 * [Mongoose](https://mongoosejs.com/docs/)
 * [Express](https://expressjs.com/)
-* [Sequelize](https://sequelize.org/)
 * [Nodemon](https://nodemon.io/)
 
 #
