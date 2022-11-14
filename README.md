@@ -4,19 +4,19 @@
 
 ## *Table of Contents:*
 
-    * [Description](#description)
-    * [Usage](#usage)
-    * [User Story](#user-story)
-    * [Demonstration of App](#demonstration-of-application)
-    * [Tech](#technologies-used)
-    * [References](#references)
-    * [Author](#author)
+* [Description](#description)
+* [Usage](#usage)
+* [User Story](#user-story)
+* [Demonstration of App](#demonstration-of-application)
+* [Tech](#technologies-used)
+* [References](#references)
+* [Author](#author)
 
 #
 
 ### *Description:*
 
-- **Hello There! In this repository I have developed a social networking App that uses MongoDB to run the database and NoSQL methods to push the data through. The user has the ability to leave comments on any topic (What is on their mind?, Important Events, etc.) while also allowing the user to leave reactions to those comments that are posted in the database. Application has been fully tested in *[Insomnia](https://insomnia.rest/products/insomnia)* for functionality.**
+- Hello There! In this repository I have developed a social networking App that uses MongoDB to run the database and NoSQL methods to push the data through. The user has the ability to leave comments on any topic (What is on their mind?, Important Events, etc.) while also allowing the user to leave reactions to those comments that are posted in the database. Application has been fully tested in **[Insomnia](https://insomnia.rest/products/insomnia)** for functionality.
 
 #
 
@@ -24,7 +24,7 @@
 
 * Clone the repository in Github.
 
-* You must have *[MongoDB](https://www.mongodb.com/)* installed in order to run the server for the database of this application.
+* You must have **[MongoDB](https://www.mongodb.com/)** installed in order to run the server for the database of this application.
 
 * To begin the User will navigate to the integrated command terminal and input `npm init` to install the necessary packages and dependencies to run the application.
 
@@ -47,13 +47,13 @@
 
     *  To add a **Friend** to a **User** in the database you must specify the Id of the **User** you want to add as a **Friend**. You must send a `POST` route through Insomnia referencing the `userId` and following with `/friends` to conclude it with the `userId` of the **User** that is to be added.
 
-        *Example:* `http://localhost:3001/api/users/636ef0a5fe0de5c4033ae156/friends/636ef256cacac23ee98032df`
+        **Example:** `http://localhost:3001/api/users/636ef0a5fe0de5c4033ae156/friends/636ef256cacac23ee98032df`
 
-        - *1st username:* `Bob Billy`
-        - *1st userId:* `636ef0a5fe0de5c4033ae156`
+        - **1st username:** `Bob Billy`
+        - **1st userId:** `636ef0a5fe0de5c4033ae156`
 
-        - *2nd username:* `Bobby Bill`
-        - *2nd userId:* `636ef256cacac23ee98032df`
+        - **2nd username:** `Bobby Bill`
+        - **2nd userId:** `636ef256cacac23ee98032df`
 
     The end result should be that in the preview of Insomnia, the `friendCount` increases by 1.
     
@@ -65,11 +65,11 @@
 
     * To Update a **Word** or **User**. The user will just need to locate the respective Id for the Object you want to update.
 
-        - *Word* : Reference the Id in the http route. Then in the **JSON** field, you will input:
+        - **Word** : Reference the Id in the http route. Then in the **JSON** field, you will input:
 
         `{ "wordText" : "*Insert Updated Text Here*" }`
 
-        - *User* : Reference the Id in the http route. Then in the **JSON** field, you will input:
+        - **User** : Reference the Id in the http route. Then in the **JSON** field, you will input:
 
         `{ "username" : " *Insert Updated Username Here* ", "email" : " *Insert Updated User Email Here* "}`
 
