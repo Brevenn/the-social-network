@@ -83,7 +83,7 @@
 
 ### *Demonstration of Application*
 
-- **[Demonstration of Usage]()**
+- **[Demonstration of Usage](https://drive.google.com/file/d/1j87VTiwTHgQixxlLTAHsntsl4HHg_PvW/view)**
 
 #
 
@@ -103,6 +103,7 @@
 #### *References*
 
 - **[The Coding Boot Camp of UT-Austin](https://techbootcamps.utexas.edu/coding/)**
+- **[Mongoosejs Guides](https://mongoosejs.com/docs/guides.html)**
 
 #
 
