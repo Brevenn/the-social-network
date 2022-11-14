@@ -2,13 +2,25 @@
 
 #
 
-## *Description:*
+## *Table of Contents:*
+
+    * [Description](#description)
+    * [Usage](#usage)
+    * [User Story](#user-story)
+    * [Demonstration of App](#demonstration-of-application)
+    * [Tech](#technologies-used)
+    * [References](#references)
+    * [Author](#author)
+
+#
+
+### *Description:*
 
 - **Hello There! In this repository I have developed a social networking App that uses MongoDB to run the database and NoSQL methods to push the data through. The user has the ability to leave comments on any topic (What is on their mind?, Important Events, etc.) while also allowing the user to leave reactions to those comments that are posted in the database. Application has been fully tested in *[Insomnia](https://insomnia.rest/products/insomnia)* for functionality.**
 
 #
 
-## *Usage:*
+### *Usage:*
 
 * Clone the repository in Github.
 
